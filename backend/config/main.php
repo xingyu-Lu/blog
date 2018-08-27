@@ -17,7 +17,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'backend\models\UserBackend',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -37,6 +37,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // 使用数据库管理配置文件
+        ],
 
         /*'urlManager' => [
             'enablePrettyUrl' => true,
@@ -46,5 +49,14 @@ return [
         ],*/
 
     ],
+    'as access' => [
+            'class' => 'mdm\admin\components\AccessControl',
+            'allowActions' => [
+                /*'site/*',//允许访问的节点，可自行添加
+                'admin/*',//允许所有人访问admin节点及其子节点
+                'gii/*'*/
+                '*'
+            ]
+        ],
     'params' => $params,
 ];
