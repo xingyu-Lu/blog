@@ -56,11 +56,6 @@
             'items' => \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback),
         ] );
         ?>
-        <ul class="sidebar-menu">
-            <li class="treeview">
-                <?= \yii\helpers\Html::a('添加新用户', ['user-backend/signup']) ?>
-            </li>
-        </ul>
 
     </section>
 
